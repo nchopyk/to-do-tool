@@ -1,0 +1,49 @@
+{
+  "name": "to-do-tool-api-service",
+  "version": "1.0.0",
+  "description": "The API server for To-Do-Tool",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "migrateLatest": "",
+    "revertLatestMigrations": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nchopyk/to-do-tool-api-service.git"
+  },
+  "keywords": [
+    "Fastify",
+    "Nodejs",
+    "MySql"
+  ],
+  "author": "To-Do-Tool Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nchopyk/to-do-tool-api-service/issues"
+  },
+  "homepage": "https://github.com/nchopyk/to-do-tool-api-service#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "fastify": "^3.24.1",
+    "fastify-cookie": "^5.4.0",
+    "fastify-cors": "^6.0.2",
+    "fastify-jwt": "^4.1.0",
+    "fastify-static": "^4.5.0",
+    "joi": "^17.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.4.0",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm precommit"
+    }
+  }
+}
