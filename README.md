@@ -2,7 +2,7 @@
 The idea of the project is to create a web application for easy organization of your time, tasks and goals.
 
 ## Functionality
-#### 1. Authorization (email + password + email confirmation, Google OAuth) 
+#### 1. Authorization (email + password + email confirmation || Google OAuth) 
 #### 2. Nesting tasks
 #### 3. Division of tasks into periods: for a day, week, and overall
 #### 4. Progress bar for each task group
@@ -13,11 +13,12 @@ The idea of the project is to create a web application for easy organization of 
 
 ## Technologies stack
 - Node.js as a back-end server runtime
-- Express.js as web framework
+- Fastify.js as web framework
 - MySQL as database
 - React.js as a client-side JavaScript framework
 
 ## Database structure
+![db structure](./docs/db-doc/diagram.png)
 
 
 ## Git rules
@@ -35,3 +36,11 @@ The idea of the project is to create a web application for easy organization of 
 3. Name the methods according to their purpose
 4. Adhere to one level of abstraction in the method
 5. One method - one action
+
+## Development instruction
+- `npm run start` - to start server
+- `npm run dev` - to start the server by automatically restarting the node application when file changes in the directory are detected (with nodemon)
+- `npm run test` - to start tests
+- `knex migrate:make [migration name] --knexfile ./src/db/knexfile.js --env [current environment]` - to create a migration
+- `nom run migrate` - to migrate latest migrations
+- `npm run revert-latest` - to revert the latest migrations
