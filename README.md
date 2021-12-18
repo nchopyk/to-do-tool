@@ -18,7 +18,7 @@ The idea of the project is to create a web application for easy organization of 
 - React.js as a client-side JavaScript framework
 
 ## Database structure
-![db structure](./docs/db-doc/diagram.png)
+![db structure](./docs/db-doc/diagram_2.1.png)
 
 
 ## Git rules
