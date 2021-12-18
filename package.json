@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "migrateLatest": "",
-    "revertLatestMigrations": ""
+    "migrateLatest": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:latest --knexfile './src/db/knexfile.js'",
+    "revertLatestMigrations": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:rollback --knexfile './src/db/knexfile.js'"
   },
   "repository": {
     "type": "git",
