@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  to-do-db:
+    image:  mysql:5.7
+    container_name: to-do-db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    ports:
+      - "${DB_PORT}:3306"
+    expose:
+      - '3306'
+    volumes:
+      - db_data:/var/lib/to-do-mysql
+volumes:
+  db_data:
