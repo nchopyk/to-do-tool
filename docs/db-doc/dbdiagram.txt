@@ -1,0 +1,48 @@
+Table users {
+    id int [pk, increment]
+    email varchar unique
+    password varchar
+    username varchar
+    full_name varchar
+    avatar_url varchar
+    created_at timestamp
+    updated_at timestamp
+    activation_link varchar
+    refresh_token varchar
+    last_login timestamp
+    last_ip varchar
+    verified boolean
+    blocked boolean
+    notifications boolean
+}
+
+Table tasks {
+    id  int [pk, increment]
+    category_id int
+    name varchar
+    description varchar
+    active_at timestamp
+    deadline_at timestamp
+    created_at timestamp
+    updated_at timestamp
+    status varchar
+    progress float
+    user_id int
+    parent_id int
+    child_id int
+}
+
+Table categories {
+  id int [pk, increment]
+  user_id int
+  name varchar
+  overall_progress float
+  created_at timestamp
+  updated_at timestamp
+}
+
+Ref: users.id < tasks.user_id
+Ref: tasks.id - tasks.parent_id
+Ref: tasks.id - tasks.child_id
+Ref: users.id < categories.user_id
+Ref: categories.id < tasks.category_id

@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "migrateLatest": "",
-    "revertLatestMigrations": ""
+    "migrateLatest": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:latest --knexfile './src/db/knexfile.js'",
+    "revertLatestMigrations": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:rollback --knexfile './src/db/knexfile.js'"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,9 @@
     "fastify-cors": "^6.0.2",
     "fastify-jwt": "^4.1.0",
     "fastify-static": "^4.5.0",
-    "joi": "^17.5.0"
+    "joi": "^17.5.0",
+    "knex": "^0.95.14",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "eslint": "^8.4.0",
