@@ -15,7 +15,7 @@ The idea of the project is to create a web application for easy organization of 
 - Node.js as a back-end server runtime
 - Fastify.js as web framework
 - MySQL as database
-- React.js as a client-side JavaScript framework
+- Knex.js as query builder
 
 ## Database structure
 ![db structure](./docs/db-doc/diagram_2.1.png)
@@ -25,10 +25,9 @@ The idea of the project is to create a web application for easy organization of 
 1. One feature - one branch 
 2. One change - one commit
 3. All secondary branches from main branch
-4. Do not work on the same files in two requests
-5. Prevent merge conflicts by pulling from main branch before push 
-6. Describe the committees in detail (not just "Updated" or "Changed")
-7. Add reviewers to merge request
+4. Prevent merge conflicts by pulling from main branch before push 
+5. Describe the committees in detail (not just "Updated" or "Changed")
+6. Add reviewers to merge request
 
 ## Code style rules
 1. Lint code before push
