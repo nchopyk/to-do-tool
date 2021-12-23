@@ -1,6 +1,7 @@
 # TO-DO tool for self development
 The idea of the project is to create a web application for easy organization of your time, tasks and goals.
 
+<strong>[Design](https://www.figma.com/file/i4tZuHFdpQdhFvkSLaGJZb/ToDoTool?node-id=0%3A1)</strong>
 ## Functionality
 #### 1. Authorization (email + password + email confirmation || Google OAuth) 
 #### 2. Nesting tasks
