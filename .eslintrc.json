@@ -20,7 +20,6 @@
     "block-spacing": ["error", "always"],
     "camelcase": ["error"],
     "eqeqeq": ["error", "always"],
-    "strict": ["error", "global"],
     "brace-style": [
       "error",
       "1tbs",
