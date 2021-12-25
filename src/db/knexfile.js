@@ -5,8 +5,8 @@ module.exports = {
     client: 'mysql',
     connection: config.DB_CONNECTION_PARAMS,
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: 'knex_migrations',
+    },
   },
 
   staging: {
@@ -14,11 +14,11 @@ module.exports = {
     connection: config.DB_CONNECTION_PARAMS,
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: 'knex_migrations',
+    },
   },
 
   production: {
@@ -26,11 +26,10 @@ module.exports = {
     connection: config.DB_CONNECTION_PARAMS,
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-
+      tableName: 'knex_migrations',
+    },
+  },
 };

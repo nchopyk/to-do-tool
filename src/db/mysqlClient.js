@@ -13,13 +13,13 @@ function initDbConnection(options = DEFAULT_OPTIONS) {
 }
 
 function checkDbConnection(dbInstance) {
-  dbInstance.raw('SELECT 1')
+  dbInstance
+    .raw('SELECT 1')
     .then(() => console.log('[DB] connection established'))
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       process.exit(1);
     });
 }
 
 module.exports = initDbConnection;
-
