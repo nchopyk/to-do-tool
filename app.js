@@ -15,7 +15,6 @@ const build = (opts = {}) => {
     credentials: true,
   });
 
-
   // app.register(userRoutes, { prefix: 'users' });
   // app.register(taskRoutes, { prefix: 'tasks' });
 
