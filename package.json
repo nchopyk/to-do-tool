@@ -9,7 +9,8 @@
     "migrate": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:latest --knexfile './src/db/knexfile.js'",
     "revert-latest-migrations": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:rollback --knexfile './src/db/knexfile.js'",
     "lint-code": "eslint . --fix",
-    "format-code": "prettier --write ."
+    "format-code": "prettier --write .",
+    "pre-commit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -41,17 +42,20 @@
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^25.3.0",
-    "husky": "^7.0.4",
+    "husky": "^4.3.8",
     "lint-staged": "^12.1.4",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1"
   },
   "lint-staged": {
-    "*": ["prettier --write ", "eslint --fix"]
+    "*": [
+      "prettier --write ",
+      "eslint --fix"
+    ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run pre-commit"
     }
   }
 }
