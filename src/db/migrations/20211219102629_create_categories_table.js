@@ -1,5 +1,5 @@
 exports.up = function(knex) {
-  return knex.schema.createTable('categories', function (table) {
+  return knex.schema.createTable('categories', (table) => {
     table.increments('id');
     table.string('name').notNullable();
     table.float('overall_progress').notNullable().defaultTo(0);
@@ -11,6 +11,6 @@ exports.up = function(knex) {
   });
 };
 
-exports.down = function (knex) {
+exports.down = function(knex) {
   return knex.schema.dropTable('categories');
 };
