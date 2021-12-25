@@ -46,9 +46,12 @@
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1"
   },
+  "lint-staged": {
+    "*": ["prettier --write ", "eslint --fix"]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint-code && npm run format-code && git add -A ."
+      "pre-commit": "lint-staged"
     }
   }
 }
