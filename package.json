@@ -8,6 +8,7 @@
     "start": "node server.js",
     "migrate": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:latest --knexfile './src/db/knexfile.js'",
     "revert-latest-migrations": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:rollback --knexfile './src/db/knexfile.js'",
+    "lint-code": "eslint . --fix",
     "format-code": "prettier --write ."
   },
   "repository": {
@@ -47,7 +48,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format-code"
+      "pre-commit": "npm run lint-code && npm run format-code && git add -A ."
     }
   }
 }
