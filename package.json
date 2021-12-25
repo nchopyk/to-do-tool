@@ -7,7 +7,8 @@
     "dev": "nodemon server.js",
     "start": "node server.js",
     "migrate": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:latest --knexfile './src/db/knexfile.js'",
-    "revert-latest-migrations": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:rollback --knexfile './src/db/knexfile.js'"
+    "revert-latest-migrations": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:rollback --knexfile './src/db/knexfile.js'",
+    "format-code": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -40,13 +41,13 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^25.3.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^12.1.4",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm precommit"
+      "pre-commit": "npm run format-code"
     }
   }
 }
