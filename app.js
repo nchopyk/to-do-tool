@@ -3,8 +3,8 @@ const config = require('./config');
 const cors = require('fastify-cors');
 const initDbConnection = require('./src/db/mysqlClient');
 
-const userRoutes = require('./routes/user-routes');
-const taskRoutes = require('./routes/tasks-routes');
+const userRoutes = require('./src/routes/user-routes');
+const taskRoutes = require('./src/routes/tasks-routes');
 
 const build = (opts = {}) => {
   const app = fastify(opts);
