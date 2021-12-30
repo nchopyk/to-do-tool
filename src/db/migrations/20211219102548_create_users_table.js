@@ -6,7 +6,7 @@ exports.up = function(knex) {
     table.string('password').notNullable();
 
     table.string('username').notNullable();
-    table.string('full_name').notNullable();
+    table.string('full_name');
     table.string('avatar_url');
 
     table.string('activation_link');
