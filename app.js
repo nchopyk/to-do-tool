@@ -1,24 +1,29 @@
-const fastify = require('fastify');
+const initFastify = require('fastify');
 const config = require('./config');
-const cors = require('fastify-cors');
-const initDbConnection = require('./src/db/mysqlClient');
 
-const userRoutes = require('./src/routes/user-routes');
-const taskRoutes = require('./src/routes/tasks-routes');
+const initDbConnection = require('./src/db/mysqlClient');
+const initAuthRouter = require('./src/routes/auth-router');
 
 const build = (opts = {}) => {
-  const app = fastify(opts);
-  const db = initDbConnection();
+  const fastify = initFastify(opts);
+  const dbClient = initDbConnection();
 
-  app.register(cors, {
+  fastify.register(require('fastify-cors'), {
     origin: true,
     credentials: true,
   });
 
-  // app.register(userRoutes, { prefix: 'users' });
-  // app.register(taskRoutes, { prefix: 'tasks' });
+  fastify.register(require('fastify-bcrypt'), {
+    saltWorkFactor: 5,
+  });
 
-  return app;
+  fastify.register(require('fastify-jwt'), {
+    secret: config.JWT_SECRET_KEY,
+  });
+
+  fastify.register(initAuthRouter({ fastify, dbClient }), { prefix: 'auth' });
+
+  return fastify;
 };
 
 module.exports = { build };
