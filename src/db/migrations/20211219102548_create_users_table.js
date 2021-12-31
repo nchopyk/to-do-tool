@@ -9,7 +9,7 @@ exports.up = function (knex) {
     table.string('full_name');
     table.string('avatar_url');
 
-    table.string('activation_link');
+    table.string('activation_link').unique();
     table.string('refresh_token');
     table.dateTime('last_login');
     table.string('last_ip');
@@ -21,7 +21,7 @@ exports.up = function (knex) {
     table.dateTime('created_at').notNullable().defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-    table.unique(['id', 'email']);
+    table.unique(['id', 'email', 'activation_link']);
   });
 };
 
