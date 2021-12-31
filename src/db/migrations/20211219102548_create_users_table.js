@@ -1,4 +1,4 @@
-exports.up = function(knex) {
+exports.up = function (knex) {
   return knex.schema.createTable('users', (table) => {
     table.increments('id');
 
@@ -14,9 +14,9 @@ exports.up = function(knex) {
     table.dateTime('last_login');
     table.string('last_ip');
 
-    table.boolean('verified');
-    table.boolean('blocked');
-    table.boolean('notifications');
+    table.boolean('verified').defaultTo(false);
+    table.boolean('blocked').defaultTo(false);
+    table.boolean('notifications').defaultTo(false);
 
     table.dateTime('created_at').notNullable().defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
@@ -25,6 +25,6 @@ exports.up = function(knex) {
   });
 };
 
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema.dropTable('users');
 };
