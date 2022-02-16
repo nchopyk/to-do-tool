@@ -1,0 +1,83 @@
+ Table users {
+  id  int [pk, increment]
+  emal varchar
+
+  username varchar
+  full_name varchar
+
+  password varchar
+  avatar id
+
+  activated boolean
+  activation_link varchar
+  blocked boolean
+
+  updated_at timestamp
+  created_at timestamp
+}
+
+Ref: users.avatar < medias.id
+Ref: users.id - user_setting.user_id
+
+Table user_setting {
+  user_id int
+  theme varchar
+  notifications boolean
+  timezone varchar
+}
+
+Table medias {
+  id int [pk, increment]
+  thumbnail varchar
+  content varchar
+  created_at timestamp
+}
+
+
+Table projects {
+  id int [pk, increment]
+  user_id int
+
+  name varchar
+  status varchar
+
+  sort_by varchar
+
+  updated_at timestamp
+  created_at timestamp
+}
+Ref: projects.user_id > users.id
+
+
+Table sections {
+  id int [pk, increment]
+  project_id int
+
+  name varchar
+
+  updated_at timestamp
+  created_at timestamp
+
+}
+Ref: sections.project_id > projects.id
+
+Table tasks {
+  id int [pk, increment]
+  project_id int
+  section_id int
+
+  name varchar
+  description varchar
+
+  priority int
+  done boolean
+
+  scheduled_at timestamp
+  deadline_at timestamp
+
+  updated_at timestamp
+  created_at timestamp
+}
+
+Ref: tasks.project_id > projects.id
+Ref: tasks.section_id > sections.id
