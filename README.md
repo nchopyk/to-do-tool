@@ -29,7 +29,7 @@ The idea of the project is to create a web application for easy organization of 
 
 ## Database structure
 
-![db structure](./docs/db-doc/diagram_2.1.png)
+![db structure](./docs/db-doc/db-diagram.png)
 
 ## Git rules
 
