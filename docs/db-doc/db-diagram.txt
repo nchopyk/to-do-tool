@@ -1,37 +1,38 @@
  Table users {
   id  int [pk, increment]
-  emal varchar
+  email varchar
 
   username varchar
   full_name varchar
 
   password varchar
-  avatar id
+  avatar_url int
 
   activated boolean
   activation_link varchar
   blocked boolean
 
+  theme varchar
+  notifications boolean
+  timezone varchar
+
+  file_store_limit_bytes bigint
+  file_store_used_bytes bigint
+
   updated_at timestamp
   created_at timestamp
 }
 
-Ref: users.avatar < medias.id
-Ref: users.id - user_setting.user_id
-
-Table user_setting {
-  user_id int
-  theme varchar
-  notifications boolean
-  timezone varchar
-}
 
 Table medias {
   id int [pk, increment]
-  thumbnail varchar
-  content varchar
+  user_id int
+  name varchar
+  thumbnail_url varchar
+  content_url varchar
   created_at timestamp
 }
+Ref: users.id < medias.user_id
 
 
 Table projects {
@@ -61,6 +62,7 @@ Table sections {
 }
 Ref: sections.project_id > projects.id
 
+
 Table tasks {
   id int [pk, increment]
   project_id int
@@ -81,3 +83,4 @@ Table tasks {
 
 Ref: tasks.project_id > projects.id
 Ref: tasks.section_id > sections.id
+Ref: tasks.id < medias.id
