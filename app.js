@@ -1,14 +1,13 @@
 const fastify = require('fastify');
 const config = require('./config');
 const cors = require('fastify-cors');
-const initDbConnection = require('./src/db/mysqlClient');
+const initDbConnection = require('./src/modules/db/mysqlClient');
 
-const userRoutes = require('./routes/user-routes');
-const taskRoutes = require('./routes/tasks-routes');
+const userRoutes = require('./src/users/user-routes');
+const taskRoutes = require('./src/tasks/tasks-routes');
 
 const build = (opts = {}) => {
   const app = fastify(opts);
-  const db = initDbConnection();
 
   app.register(cors, {
     origin: true,
