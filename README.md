@@ -48,11 +48,11 @@ The idea of the project is to create a web application for easy organization of 
 4. Adhere to one level of abstraction in the method
 5. One method - one action
 
-## Development instruction
+## Development instructions
 
 - `npm run start` - to start server
 - `npm run dev` - to start the server by automatically restarting the node application when file changes in the directory are detected (with nodemon)
 - `npm run test` - to start tests
-- `knex migrate:make [migration name] --knexfile ./src/db/knexfile.js --env [current environment]` - to create a migration
+- `knex migrate:make [migration name] --knexfile ./src/modules/db/knexfile.js --env [current environment]` - to create a migration
 - `npm run migrate` - to migrate latest migrations
 - `npm run revert-latest-migrations` - to revert the latest migrations

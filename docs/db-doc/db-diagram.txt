@@ -27,6 +27,7 @@
 Table medias {
   id int [pk, increment]
   user_id int
+  task_id int
   name varchar
   thumbnail_url varchar
   content_url varchar
@@ -40,9 +41,10 @@ Table projects {
   user_id int
 
   name varchar
-  status varchar
+  active boolean
 
-  sort_by varchar
+  sort_tasks_by varchar
+  sort_order_by varchar
 
   updated_at timestamp
   created_at timestamp
@@ -83,4 +85,4 @@ Table tasks {
 
 Ref: tasks.project_id > projects.id
 Ref: tasks.section_id > sections.id
-Ref: tasks.id < medias.id
+Ref: tasks.id < medias.task_id
