@@ -1,18 +1,18 @@
 exports.up = function(knex) {
   return knex.schema.createTable('projects', (table) => {
     table.increments('id');
-    table.integer('user_id').unsigned().references('id').inTable('users').onDelete('cascade').notNullable();
+    table.integer('userId').unsigned().references('id').inTable('users').onDelete('cascade').notNullable();
 
     table.string('name').notNullable();
     table.boolean('active').defaultTo(true);
 
-    table.string('sort_tasks_by').defaultTo('created_at');
-    table.string('order_tasks_by').defaultTo('DESC');
+    table.string('sortTasksBy', 15).defaultTo('createdAt');
+    table.string('orderTasksBy', 15).defaultTo('DESC');
 
-    table.dateTime('created_at').notNullable().defaultTo(knex.fn.now());
-    table.dateTime('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+    table.dateTime('createdAt').notNullable().defaultTo(knex.fn.now());
+    table.dateTime('updatedAt').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-    table.unique(['id', 'user_id']);
+    table.unique(['id', 'userId']);
   });
 };
 

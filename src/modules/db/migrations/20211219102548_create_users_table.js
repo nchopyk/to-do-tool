@@ -6,23 +6,23 @@ exports.up = function(knex) {
     table.string('password').notNullable();
 
     table.string('username').notNullable();
-    table.string('full_name');
+    table.string('fullName');
 
-    table.string('avatar_url');
+    table.string('avatarUrl');
 
     table.boolean('activated').defaultTo(false);
-    table.string('activation_link').unique();
+    table.string('activationLink').unique();
     table.boolean('blocked').defaultTo(false);
 
-    table.string('theme');
+    table.string('theme', 20);
     table.boolean('notifications').defaultTo(true);
-    table.string('timezone').defaultTo('Europe/Kiev');
+    table.string('timezone', 20).defaultTo('Europe/Kiev');
 
-    table.bigInteger('file_store_limit_bytes').defaultTo(1073741824); // 1 gb
-    table.bigInteger('file_store_used_bytes').defaultTo(0);
+    table.bigInteger('fileStorageLimitBytes').defaultTo(1073741824); // 1 gb
+    table.bigInteger('fileStorageUsedBytes').defaultTo(0);
 
-    table.dateTime('created_at').notNullable().defaultTo(knex.fn.now());
-    table.dateTime('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+    table.dateTime('createdAt').notNullable().defaultTo(knex.fn.now());
+    table.dateTime('updatedAat').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
     table.unique(['id', 'email']);
   });
