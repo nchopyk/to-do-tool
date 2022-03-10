@@ -1,22 +1,22 @@
 exports.up = function(knex) {
   return knex.schema.createTable('tasks', (table) => {
     table.increments('id');
-    table.integer('project_id').unsigned().references('id').inTable('projects').onDelete('cascade').notNullable();
-    table.integer('section_id').unsigned().references('id').inTable('sections').onDelete('cascade');
+    table.integer('projectId').unsigned().references('id').inTable('projects').onDelete('cascade').notNullable();
+    table.integer('sectionId').unsigned().references('id').inTable('sections').onDelete('cascade');
 
     table.string('name').notNullable();
-    table.string('description', 1000);
+    table.string('description', 500);
 
     table.integer('priority').defaultTo(0);
     table.boolean('done').defaultTo(false);
 
-    table.dateTime('scheduled_at');
-    table.dateTime('deadline_at');
+    table.dateTime('scheduledAt');
+    table.dateTime('deadlineAt');
 
-    table.dateTime('created_at').notNullable().defaultTo(knex.fn.now());
-    table.dateTime('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+    table.dateTime('createdAt').notNullable().defaultTo(knex.fn.now());
+    table.dateTime('updatedAt').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-    table.unique(['id', 'project_id', 'section_id']);
+    table.unique(['id', 'projectId', 'sectionId']);
   });
 };
 
