@@ -1,12 +1,13 @@
 {
   "env": {
     "browser": true,
+    "commonjs": true,
     "es6": true,
     "node": true
   },
   "extends": ["eslint:recommended", "prettier"],
   "parserOptions": {
-    "ecmaVersion": 2020
+    "ecmaVersion": 8
   },
   "globals": {
     "BigInt": true
@@ -60,7 +61,7 @@
     "max-len": [
       "error",
       {
-        "code": 140,
+        "code": 150,
         "ignoreUrls": true
       }
     ],
