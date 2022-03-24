@@ -1,9 +1,11 @@
-const fastify = require('fastify');
-const config = require('./config');
-const cors = require('fastify-cors');
-const initDbConnection = require('./src/modules/db/mysqlClient');
+'use strict';
 
-const build = (opts = {}) => {
+const fastify = require('fastify');
+const cors = require('fastify-cors');
+
+const projectsRouter = require('./src/projects/routes');
+
+const build = (opts = { logger: true }) => {
   const app = fastify(opts);
 
   app.register(cors, {
@@ -11,8 +13,7 @@ const build = (opts = {}) => {
     credentials: true,
   });
 
-  // app.register(userRoutes, { prefix: 'users' });
-  // app.register(taskRoutes, { prefix: 'tasks' });
+  app.register(projectsRouter, { prefix: 'projects' });
 
   return app;
 };
