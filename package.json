@@ -41,7 +41,7 @@
     "restify-errors": "^8.0.2"
   },
   "devDependencies": {
-    "eslint": "^8.5.0",
+    "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^25.3.0",
     "husky": "^4.3.8",
