@@ -1,4 +1,4 @@
-const errors = require('../../utils/errors');
+const errors = require('../../../utils/errors');
 
 class ProjectService {
   constructor(projectsDataManager, DTOs) {

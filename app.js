@@ -3,7 +3,7 @@
 const fastify = require('fastify');
 const cors = require('fastify-cors');
 
-const projectsRouter = require('./src/projects/routes');
+const projectsRouter = require('./src/components/projects/routes');
 
 const build = (opts = { logger: true }) => {
   const app = fastify(opts);

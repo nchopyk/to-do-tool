@@ -38,7 +38,7 @@ class ProjectsDataManager {
 }
 
 const initDataManager = () => {
-  const initDbConnection = require('../../modules/db/mysqlClient');
+  const initDbConnection = require('../../../modules/db/mysqlClient');
   const dbClient = initDbConnection();
   return new ProjectsDataManager(dbClient);
 };
