@@ -9,56 +9,31 @@ class ProjectsDataManager {
   }
 
   async getById({ projectId, userId }) {
-    const [project] = await this.dbClient
-      .select()
-      .from('projects')
-      .where({ id: projectId })
-      .andWhere({ userId });
+    const [project] = await this.dbClient.select().from('projects').where({ id: projectId }).andWhere({ userId });
 
     return project;
   }
 
-  async getAll({ userId, limit, skip, sort, order }) {
+  async getAll({ userId, limit, skip, sort, order, onlyActive, onlyInactive }) {
     return this.dbClient
       .select()
       .from('projects')
       .where({ userId })
       .offset(skip)
       .limit(limit)
-      .orderBy(sort, order);
-  }
-
-  async getAllActive({ userId, limit, skip, sort, order }) {
-    return this.dbClient
-      .select()
-      .from('projects')
-      .where({ userId, active: true })
-      .offset(skip)
-      .limit(limit)
-      .orderBy(sort, order);
-  }
-
-  async getAllInactive({ userId, limit, skip, sort, order }) {
-    return this.dbClient
-      .select()
-      .from('projects')
-      .where({ userId, active: false })
-      .offset(skip)
-      .limit(limit)
-      .orderBy(sort, order);
+      .orderBy(sort, order)
+      .modify((queryBuilder) => {
+        if (onlyActive) queryBuilder.where({ active: true });
+        if (onlyInactive) queryBuilder.where({ active: false });
+      });
   }
 
   async update({ projectId, userId, name, active, sortTasksBy, orderTasksBy }) {
-    return this.dbClient('projects')
-      .where({ id: projectId })
-      .andWhere({ userId })
-      .update({ name, active, sortTasksBy, orderTasksBy });
+    return this.dbClient('projects').where({ id: projectId }).andWhere({ userId }).update({ name, active, sortTasksBy, orderTasksBy });
   }
 
   async delete({ projectId, userId }) {
-    return this.dbClient('projects')
-      .where({ id: projectId, userId })
-      .del();
+    return this.dbClient('projects').where({ id: projectId, userId }).del();
   }
 }
 
