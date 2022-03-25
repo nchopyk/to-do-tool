@@ -22,7 +22,9 @@ class ProjectService {
   }
 
   async getAll({ userId, limit, skip, sort, order, onlyActive, onlyInactive }) {
-    return this.projectsDataManager.getAll({ userId, limit, skip, sort, order, onlyActive, onlyInactive });
+    const projects = await this.projectsDataManager.getAll({ userId, limit, skip, sort, order, onlyActive, onlyInactive });
+
+    return projects.map((project) => this.DTOs.toBaseDto(project));
   }
 
   async update({ projectId, userId, name, active, sortTasksBy, orderTasksBy }) {
