@@ -58,7 +58,7 @@ class ProjectsController {
 }
 
 const initController = () => {
-  const projectsService = require('./component/service');
+  const projectsService = require('./service');
   return new ProjectsController(projectsService);
 };
 

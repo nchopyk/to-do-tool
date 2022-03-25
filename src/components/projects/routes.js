@@ -1,4 +1,4 @@
-const validatorCompiler = require('../utils/validatorCompiler');
+const validatorCompiler = require('../../utils/validatorCompiler');
 const projectsValidationSchemas = require('./validationSchemas');
 const projectsController = require('./controller');
 

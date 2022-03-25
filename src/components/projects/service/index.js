@@ -1,4 +1,4 @@
-const errors = require('../../utils/errors');
+const errors = require('../../../utils/errors');
 
 class ProjectService {
   constructor(projectsDataManager, DTOs) {
@@ -22,13 +22,9 @@ class ProjectService {
   }
 
   async getAll({ userId, limit, skip, sort, order, onlyActive, onlyInactive }) {
-    const active = onlyInactive ? [] : await this.projectsDataManager.getAllActive({ userId, limit, skip, sort, order });
-    const inactive = onlyActive ? [] : await this.projectsDataManager.getAllInactive({ userId, limit, skip, sort, order });
+    const projects = await this.projectsDataManager.getAll({ userId, limit, skip, sort, order, onlyActive, onlyInactive });
 
-    return {
-      active: active.map((project) => this.DTOs.toBaseDto(project)),
-      inactive: inactive.map((project) => this.DTOs.toBaseDto(project))
-    };
+    return projects.map((project) => this.DTOs.toBaseDto(project));
   }
 
   async update({ projectId, userId, name, active, sortTasksBy, orderTasksBy }) {
@@ -43,7 +39,6 @@ class ProjectService {
     return this.projectsDataManager.delete({ projectId, userId });
   }
 }
-
 
 function initService() {
   const projectsDataManager = require('./data-manager');
