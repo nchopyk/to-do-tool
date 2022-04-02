@@ -35,6 +35,12 @@ class ProjectsDataManager {
   async delete({ projectId, userId }) {
     return this.dbClient('projects').where({ id: projectId, userId }).del();
   }
+
+  async isExist({ projectId, userId }) {
+    const [project] = await this.dbClient.select('id').from('projects').where({ id: projectId, userId });
+
+    return !!project;
+  }
 }
 
 const initDataManager = () => {
