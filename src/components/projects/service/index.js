@@ -38,11 +38,17 @@ class ProjectService {
   async delete({ projectId, userId }) {
     return this.projectsDataManager.delete({ projectId, userId });
   }
+
+  async throwIfProjectNotExists({ projectId, userId }) {
+    const projectExists = await this.projectsDataManager.isExist({ projectId, userId });
+
+    if (!projectExists) throw new errors.NotFoundError('Project with such id not found');
+  }
 }
 
 function initService() {
-  const projectsDataManager = require('./data-manager');
-  const projectsDTOs = require('./dtos');
+  const projectsDataManager = require('./project-repository');
+  const projectsDTOs = require('./project-dtos');
   return new ProjectService(projectsDataManager, projectsDTOs);
 }
 

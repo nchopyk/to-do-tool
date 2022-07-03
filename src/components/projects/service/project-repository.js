@@ -1,4 +1,4 @@
-class ProjectsDataManager {
+class ProjectRepository {
   constructor(dbClient) {
     this.dbClient = dbClient;
   }
@@ -35,12 +35,18 @@ class ProjectsDataManager {
   async delete({ projectId, userId }) {
     return this.dbClient('projects').where({ id: projectId, userId }).del();
   }
+
+  async isExist({ projectId, userId }) {
+    const [project] = await this.dbClient.select('id').from('projects').where({ id: projectId, userId });
+
+    return !!project;
+  }
 }
 
 const initDataManager = () => {
-  const initDbConnection = require('../../../modules/db/mysqlClient');
+  const initDbConnection = require('../../../modules/db/mysql-client');
   const dbClient = initDbConnection();
-  return new ProjectsDataManager(dbClient);
+  return new ProjectRepository(dbClient);
 };
 
 module.exports = initDataManager();

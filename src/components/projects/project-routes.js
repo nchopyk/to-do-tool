@@ -1,6 +1,6 @@
-const validatorCompiler = require('../../utils/validatorCompiler');
-const projectsValidationSchemas = require('./validationSchemas');
-const projectsController = require('./controller');
+const validatorCompiler = require('../../utils/validator-compiler');
+const projectsValidationSchemas = require('./project-validation-schemas');
+const projectsController = require('./project-controller');
 
 
 const initRouter = (fastify, opts, done) => {

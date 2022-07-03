@@ -3,9 +3,10 @@
 const fastify = require('fastify');
 const cors = require('fastify-cors');
 
-const projectsRouter = require('./src/components/projects/routes');
+const projectsRouter = require('./src/components/projects/project-routes');
+const tasksRouter = require('./src/components/tasks/task-routes');
 
-const build = (opts = { logger: true }) => {
+const build = (opts = { logger: { prettyPrint: true } }) => {
   const app = fastify(opts);
 
   app.register(cors, {
@@ -14,6 +15,7 @@ const build = (opts = { logger: true }) => {
   });
 
   app.register(projectsRouter, { prefix: 'projects' });
+  app.register(tasksRouter, { prefix: 'tasks' });
 
   return app;
 };

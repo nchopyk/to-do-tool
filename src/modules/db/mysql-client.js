@@ -22,4 +22,4 @@ function checkDbConnection(dbInstance) {
     });
 }
 
-module.exports = initDbConnection;
+module.exports = initDbConnection();
