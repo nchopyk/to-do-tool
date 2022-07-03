@@ -1,4 +1,4 @@
-class ProjectsDataManager {
+class ProjectRepository {
   constructor(dbClient) {
     this.dbClient = dbClient;
   }
@@ -44,9 +44,9 @@ class ProjectsDataManager {
 }
 
 const initDataManager = () => {
-  const initDbConnection = require('../../../modules/db/mysqlClient');
+  const initDbConnection = require('../../../modules/db/mysql-client');
   const dbClient = initDbConnection();
-  return new ProjectsDataManager(dbClient);
+  return new ProjectRepository(dbClient);
 };
 
 module.exports = initDataManager();

@@ -47,8 +47,8 @@ class ProjectService {
 }
 
 function initService() {
-  const projectsDataManager = require('./data-manager');
-  const projectsDTOs = require('./dtos');
+  const projectsDataManager = require('./project-repository');
+  const projectsDTOs = require('./project-dtos');
   return new ProjectService(projectsDataManager, projectsDTOs);
 }
 
