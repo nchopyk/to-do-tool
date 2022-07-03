@@ -3,6 +3,7 @@ exports.up = function(knex) {
     table.increments('id');
     table.integer('projectId').unsigned().references('id').inTable('projects').onDelete('cascade').notNullable();
     table.integer('sectionId').unsigned().references('id').inTable('sections').onDelete('cascade');
+    table.integer('userId').unsigned().references('id').inTable('users').onDelete('cascade');
 
     table.string('name').notNullable();
     table.string('description', 500);
